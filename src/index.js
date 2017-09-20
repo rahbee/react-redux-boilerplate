@@ -1,13 +1,16 @@
-import _ from 'lodash';
-import './style.scss';
-function component() {
-  var element = document.createElement('div');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxPromise from 'redux-promise'
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
+import App from './components/app';
+import reducers from './reducers';
 
-  return element;
-}
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
-document.body.appendChild(component());
+ReactDOM.render(
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <App />
+  </Provider>
+  , document.getElementById('root'));
