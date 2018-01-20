@@ -33,13 +33,13 @@ class SearchBar extends Component {
   }
 }
 
-SearchBar.propTypes = {
-  fetchWeather: PropTypes,
-};
+// SearchBar.propTypes = {
+//   fetchWeather: PropTypes,
+// };
 
-SearchBar.defaultProps = {
-  fetchWeather: {},
-};
+// SearchBar.defaultProps = {
+//   fetchWeather: {},
+// };
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchWeather }, dispatch);
